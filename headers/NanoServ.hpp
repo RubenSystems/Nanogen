@@ -1,11 +1,10 @@
-
-
 #pragma once
 
 
 #include "BaseView.hpp"
+#include <string>
+#include <unordered_map>
 #include <stdio.h> 
-#include <string>   //strlen 
 #include <sstream>
 #include <stdlib.h> 
 #include <errno.h> 
@@ -16,8 +15,7 @@
 #include <netinet/in.h> 
 #include <sys/time.h>
 #include <iostream>
-#include <fcntl.h>
-
+#include <vector>
 
 namespace RubenSystems {
 	namespace NanoGen {
@@ -28,7 +26,6 @@ namespace RubenSystems {
 				void start (int port) ;
 
 				void route(const std::string & type, const std::string & path, const Callback & callback);
-
 
 			private:
 				std::unordered_map<std::string, Callback> callbacks;
@@ -41,8 +38,8 @@ namespace RubenSystems {
 
 				std::string createResponse(const std::string & message);
 
-
 		};
+
 
 		std::string NanoServ::getRouteID(const std::string type, const std::string & path) {
 			return type + std::string("_") + path;
